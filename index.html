@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dictionary App</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</head>
+<body class="flex flex-col w-screen h-screen bg-gradient-to-r from-pink-100 via-orange-200 to-purple-400">
+
+  <!-- Header Section -->
+  <header class="flex w-full h-[15vh] bg-purple-900 p-4 justify-between items-center shadow-lg">
+    <div class="flex items-center gap-4 ml-[5vw] text-yellow-300 text-2xl">
+      <h1 class="text-4xl tracking-wider font-bold">Dictionary</h1>
+      <ion-icon name="book-outline" style="color: lightcoral;" class="text-3xl"></ion-icon>
+    </div>
+
+    <button onclick="toggle()" class="text-4xl cursor-pointer transition-transform transform hover:scale-110">
+      <ion-icon name="trash-outline" style="color: lightcoral;"></ion-icon>
+    </button>
+
+    <div id="history" class="history absolute top-0 right-0 w-[30vw] h-full bg-yellow-50 z-20 hidden flex-col transition-all duration-300 ease-in-out shadow-2xl">
+      <div class="flex bg-yellow-500 w-full h-[15vh] justify-between p-4 items-center">
+        <h3 class="text-3xl text-white">History</h3>
+        <ion-icon onclick="toggle()" name="close-outline" class="text-4xl text-white cursor-pointer transition-transform transform hover:scale-125"></ion-icon>
+      </div>
+      <div class="w-full h-[6vh] p-2.5 flex justify-center">
+        <button onclick="deletelist()" class="text-purple-900 w-[20vw] h-[6vh] text-xl border-2 border-purple-800 transition-transform transform hover:scale-110 active:scale-95">
+          Delete History
+        </button>
+      </div>
+      <div class="w-full h-[79vh] p-9 ml-10 overflow-y-auto">
+        <ul id="list" class="list-disc text-2xl text-purple-900"></ul>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content Section -->
+  <main class="w-full h-[85vh] flex flex-col items-center justify-center font-sans relative">
+    <!-- Optional Image Background -->
+    <img src="book.jpg" alt="Dictionary" class="absolute inset-0 w-full h-full object-cover opacity-20">
+    
+    <div class="w-full flex justify-center items-center z-10">
+      <input type="text" id="input" placeholder="Search for a word..." class="w-[40vw] h-[10vh] text-2xl p-5 border-2 border-purple-500 bg-purple-100 rounded-xl shadow-lg placeholder-gray-600 outline-none focus:border-purple-900 transition-all duration-200">
+      <button onclick="search()" id="search-btn" class="w-[10vw] h-[10vh] text-4xl cursor-pointer bg-yellow-500 text-purple-900 rounded-lg shadow-lg ml-4 hover:bg-yellow-600 active:bg-yellow-400 transition-all duration-200 transform active:scale-95">
+        <ion-icon name="search-outline" class="text-purple-900"></ion-icon>
+      </button>
+    </div>
+
+    <div class="w-[50%] h-[60vh] pt-8 px-[10%] bg-yellow-100 rounded-xl shadow-2xl mt-8 z-10">
+      <div class="text-xl">
+        <h2 class="text-3xl text-purple-700 font-semibold">Meaning:</h2>
+      </div>
+      <div id="answer" class="text-xl mt-4 ml-5 text-purple-800"></div>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
